@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using UserManagement.Models;
 using UserManagement.Services;
@@ -41,7 +37,7 @@ namespace UserManagement.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] User user)
         {
-            _userService.Update(user);
+            _userService.Update(id, user);
         }
 
         [HttpDelete("{id}")]

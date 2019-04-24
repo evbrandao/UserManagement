@@ -7,36 +7,56 @@ namespace UserManagement.Services
 {
     public class UserService : IUserService
     {
-        private IList<User> _users;
+        private IDictionary<int, User> _users;
 
         public UserService()
         {
-            _users = new List<User>();
+            _users = new Dictionary<int, User>();
         }
 
         public void Create(User user)
         {
-            _users.Add(user);
+            user.Id = GenerateUserId();
+            _users.Add(user.Id, user);
         }
 
         public User Find(int id)
         {
-            return _users.FirstOrDefault(u => u.Id.Equals(id));
+            User user;
+            _users.TryGetValue(id, out user);
+
+            return user;
         }
 
         public IEnumerable<User> FindAll()
         {
-            return _users; //TODO: Return a new list
+            return _users.Values.ToList();
         }
 
         public void Remove(int id)
         {
-            throw new NotImplementedException();
+            if (UserExists(id))
+            {
+                _users.Remove(id);
+            }
         }
 
-        public void Update(User user)
+        public void Update(int id, User user)
         {
-            throw new NotImplementedException();
+            if (UserExists(id))
+            {
+                _users[id] = user;
+            }
+        }
+
+        private bool UserExists(int id)
+        {
+            return _users.ContainsKey(id);
+        }
+
+        private int GenerateUserId()
+        {
+            return new Random().Next();
         }
     }
 }

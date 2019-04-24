@@ -11,7 +11,6 @@ C:\dev\v2\UserManagement\UserManagement\obj\Debug\netcoreapp2.1\UserManagement.R
 C:\dev\v2\UserManagement\UserManagement\bin\Debug\netcoreapp2.1\UserManagement.pdb
 C:\dev\v2\UserManagement\UserManagement\obj\Debug\netcoreapp2.1\UserManagement.dll
 C:\dev\v2\UserManagement\UserManagement\obj\Debug\netcoreapp2.1\UserManagement.pdb
-C:\dev\v2\UserManagement\UserManagement\obj\Debug\netcoreapp2.1\UserManagement.csprojAssemblyReference.cache
 C:\dev\v2\UserManagement\UserManagement\bin\Debug\netcoreapp2.1\UserManagement.Views.dll
 C:\dev\v2\UserManagement\UserManagement\bin\Debug\netcoreapp2.1\UserManagement.Views.pdb
 C:\dev\v2\UserManagement\UserManagement\obj\Debug\netcoreapp2.1\UserManagement.TagHelpers.input.cache

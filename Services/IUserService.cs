@@ -8,7 +8,7 @@ namespace UserManagement.Services
         User Find(int id);
         IEnumerable<User> FindAll();
         void Create(User user);
-        void Update(User user);
+        void Update(int id, User user);
         void Remove(int id);
     }
 }
