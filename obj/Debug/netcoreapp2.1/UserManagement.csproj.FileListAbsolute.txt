@@ -20,3 +20,4 @@ C:\dev\v2\UserManagement\UserManagement\obj\Debug\netcoreapp2.1\Razor\Views\Home
 C:\dev\v2\UserManagement\UserManagement\obj\Debug\netcoreapp2.1\UserManagement.RazorTargetAssemblyInfo.cs
 C:\dev\v2\UserManagement\UserManagement\obj\Debug\netcoreapp2.1\UserManagement.Views.pdb
 C:\dev\v2\UserManagement\UserManagement\obj\Debug\netcoreapp2.1\UserManagement.csproj.CopyComplete
+C:\dev\v2\UserManagement\UserManagement\obj\Debug\netcoreapp2.1\UserManagement.csprojAssemblyReference.cache

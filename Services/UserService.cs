@@ -1,62 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using UserManagement.Models;
+using UserManagement.Repository;
 
 namespace UserManagement.Services
 {
     public class UserService : IUserService
     {
-        private IDictionary<int, User> _users;
+        private IUserRepository _userRepository;
 
-        public UserService()
+        public UserService(IUserRepository userRepository)
         {
-            _users = new Dictionary<int, User>();
+            _userRepository = userRepository;
         }
 
         public void Create(User user)
         {
-            user.Id = GenerateUserId();
-            _users.Add(user.Id, user);
+            _userRepository.Create(user);
         }
 
         public User Find(int id)
         {
-            User user;
-            _users.TryGetValue(id, out user);
-
-            return user;
+            return _userRepository.Find(id);
         }
 
         public IEnumerable<User> FindAll()
         {
-            return _users.Values.ToList();
+            return _userRepository.FindAll();
         }
 
         public void Remove(int id)
         {
-            if (UserExists(id))
-            {
-                _users.Remove(id);
-            }
+            _userRepository.Remove(id);
         }
 
         public void Update(int id, User user)
         {
-            if (UserExists(id))
-            {
-                _users[id] = user;
-            }
-        }
-
-        private bool UserExists(int id)
-        {
-            return _users.ContainsKey(id);
-        }
-
-        private int GenerateUserId()
-        {
-            return new Random().Next();
+            _userRepository.Update(id, user);
         }
     }
 }
