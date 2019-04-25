@@ -22,10 +22,18 @@ const paths = {
 gulp.task('default', function () {
 });
 
-gulp.task('min:js', function () {
+gulp.task('min:vendor:js', function () {
     return gulp
-        .src([paths.angular, paths.userManagement])
-        .pipe(concat(paths.jsDest + "/min/site.min.js"))
+        .src([paths.angular])
+        .pipe(concat(paths.jsDest + "/min/vendor.min.js"))
+        .pipe(uglify())
+        .pipe(gulp.dest('.'));
+});
+
+gulp.task('min:app:js', function () {
+    return gulp
+        .src([paths.userManagement])
+        .pipe(concat(paths.jsDest + "/min/app.min.js"))
         .pipe(uglify())
         .pipe(gulp.dest('.'));
 });
@@ -50,5 +58,6 @@ gulp.task('copy:css', function () {
         .pipe(gulp.dest(paths.cssDest));
 });
 
+gulp.task('min:js', ['min:vendor:js', 'min:app:js']);
 gulp.task('min', ['min:js', 'min:css']);
 gulp.task('copy', ['copy:js', 'copy:css']);

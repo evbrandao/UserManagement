@@ -4,7 +4,7 @@
         .module('userManagement', [])
         .service('apiCaller', ['$http', function ($http) {
 
-            const path = '/api/user/';
+            var path = '/api/user/';
 
             this.getUser = function (id) {
 

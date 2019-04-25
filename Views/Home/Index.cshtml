@@ -24,7 +24,7 @@
     <main role="main">
 
         <div class="album py-5 bg-light" ng-app="userManagement">
-            
+
             <div class="container" ng-cloak>
 
                 <input ng-model="nameFilter" type="text" class="form-control" name="name" placeholder="Filter by name" />
@@ -41,7 +41,7 @@
                                     <input required class="form-control" ng-model="user.name" type="text" name="userName" value="{{user.name}}" placeholder="name" />
                                 </foreignObject>
                             </svg>
-                            
+
                             <div class="card-body">
                                 <p class="card-text" ng-if="!user.editing">{{user.age}} years old</p>
                                 <p class="card-text" ng-if="user.editing">
@@ -90,7 +90,7 @@
 
                 </div>
 
-            
+
             </div>
 
         </div>
@@ -105,8 +105,8 @@
         </div>
     </footer>
 
-    <script src="~/js/angular.js"></script>
-    <script src="~/js/UserManagement.js"></script>
+    <script src="~/js/min/vendor.min.js"></script>
+    <script src="~/js/min/app.min.js"></script>
 
 </body>
 </html>
