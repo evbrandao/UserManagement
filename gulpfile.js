@@ -13,6 +13,8 @@ const paths = {
 
     bootstrapCss: './bower_components/bootstrap/dist/css/bootstrap.css',
 
+    userManagement: './App/Scripts/UserManagement.js',
+
     jsDest: webroot + 'js',
     cssDest: webroot + 'css'
 };
@@ -38,7 +40,7 @@ gulp.task('min:css', function () {
 
 gulp.task('copy:js', function () {
     return gulp
-        .src([paths.angular])
+        .src([paths.angular, paths.userManagement])
         .pipe(gulp.dest(paths.jsDest));
 });
 

@@ -23,29 +23,74 @@
 
     <main role="main">
 
-        <div class="album py-5 bg-light">
+        <div class="album py-5 bg-light" ng-app="userManagement">
             
-            <div class="container" ng-app="userManagement">
+            <div class="container" ng-cloak>
 
-                <div class="row">
+                <input ng-model="nameFilter" type="text" class="form-control" name="name" placeholder="Filter by name" />
+                <br />
+                <div class="row" ng-controller="mainController">
 
-                    <div class="col-md-4">
+                    <div class="col-md-4" ng-repeat="user in users | filter:{name:nameFilter}">
                         <div class="card mb-4 shadow-sm">
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+                                <title></title>
+                                <rect width="100%" height="100%" fill="#55595c"></rect>
+                                <text ng-if="!user.editing" x="50%" y="50%" fill="#eceeef" dy=".3em">{{user.name}}</text>
+                                <foreignObject ng-if="user.editing" x="70" y="100" width="200" height="150">
+                                    <input required class="form-control" ng-model="user.name" type="text" name="userName" value="{{user.name}}" placeholder="name" />
+                                </foreignObject>
+                            </svg>
+                            
                             <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <p class="card-text" ng-if="!user.editing">{{user.age}} years old</p>
+                                <p class="card-text" ng-if="user.editing">
+                                    <input required class="form-control" type="text" ng-model="user.age" name="userAge" value="{{user.age}}" ng-if="user.editing" placeholder="age" />
+                                </p>
+
+                                <p class="card-text" ng-if="!user.editing">{{user.address}}</p>
+                                <p class="card-text" ng-if="user.editing">
+                                    <input required type="text" class="form-control" ng-model="user.address" name="userAddress" value="{{user.address}}" ng-if="user.editing" placeholder="address" />
+                                </p>
+
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Save</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary"
+                                                ng-if="user.editing"
+                                                ng-click="save(user)">
+                                            Save
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary"
+                                                ng-if="!user.editing"
+                                                ng-click="user.editing = true">
+                                            Edit
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary"
+                                                ng-click="removeUser(user, $index)">
+                                            Remove
+                                        </button>
+                                        <a ng-if="!user.editing" href="/user/{{user.id}}" class="btn btn-sm btn-outline-secondary" role="button" aria-pressed="true">View</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">New user</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title">&nbsp;<small class="text-muted"></small></h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li>&nbsp;</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-secondary" ng-click="addNewUser()">+</button>
+                        </div>
+                    </div>
+
                 </div>
+
             
             </div>
 
@@ -62,6 +107,7 @@
     </footer>
 
     <script src="~/js/angular.js"></script>
+    <script src="~/js/UserManagement.js"></script>
 
 </body>
 </html>
