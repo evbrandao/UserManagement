@@ -4,6 +4,7 @@
   "dependencies": {
     "startbootstrap-sb-admin-2": "v4.0.3",
     "angular": "1.7.8",
+    "angular-route": "1.7.8",
     "bootstrap": "4.3.1"
   }
 }

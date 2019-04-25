@@ -24,7 +24,7 @@ gulp.task('default', function () {
 
 gulp.task('min:js', function () {
     return gulp
-        .src([paths.angular])
+        .src([paths.angular, paths.userManagement])
         .pipe(concat(paths.jsDest + "/min/site.min.js"))
         .pipe(uglify())
         .pipe(gulp.dest('.'));

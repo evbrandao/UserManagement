@@ -85,7 +85,8 @@
                         });
                     }
                     else {
-                        apiCaller.createUser(user).then(function () {
+                        apiCaller.createUser(user).then(function (response) {
+                            user.id = response.data.id;
                             user.editing = false;
                         }).catch(function (error) {
                             logError('Error creating user:', error);

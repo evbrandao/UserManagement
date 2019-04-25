@@ -1,7 +1,16 @@
 (function () {
 
     angular
-        .module('userManagement', [])
+        .module('userManagement', ['ngRoute'])
+        .config(function ($routeProvider) {
+            $routeProvider
+                .when('/user/{id}', {
+                    redirectTo: '/'
+                })
+                .otherwise({
+                    redirectTo: '/'
+                });
+        })
         .service('apiCaller', ['$http', function ($http) {
 
             const path = '/api/user/';
@@ -85,7 +94,8 @@
                         });
                     }
                     else {
-                        apiCaller.createUser(user).then(function () {
+                        apiCaller.createUser(user).then(function (response) {
+                            user.id = response.data.id;
                             user.editing = false;
                         }).catch(function (error) {
                             logError('Error creating user:', error);

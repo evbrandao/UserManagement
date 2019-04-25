@@ -14,10 +14,12 @@ namespace UserManagement.Repository
             _users = new Dictionary<int, User>();
         }
 
-        public void Create(User user)
+        public User Create(User user)
         {
             user.Id = GenerateUserId();
             _users.Add(user.Id, user);
+
+            return user;
         }
 
         public User Find(int id)

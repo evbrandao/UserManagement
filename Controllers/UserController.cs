@@ -29,9 +29,9 @@ namespace UserManagement.Controllers
         }
 
         [HttpPost]
-        public void Post([FromBody] User user)
+        public User Post([FromBody] User user)
         {
-            _userService.Create(user);
+            return _userService.Create(user);
         }
 
         [HttpPut("{id}")]

@@ -13,9 +13,9 @@ namespace UserManagement.Services
             _userRepository = userRepository;
         }
 
-        public void Create(User user)
+        public User Create(User user)
         {
-            _userRepository.Create(user);
+            return _userRepository.Create(user);
         }
 
         public User Find(int id)

@@ -7,7 +7,7 @@ namespace UserManagement.Repository
     {
         User Find(int id);
         IEnumerable<User> FindAll();
-        void Create(User user);
+        User Create(User user);
         void Update(int id, User user);
         void Remove(int id);
     }
