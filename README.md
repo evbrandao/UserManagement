@@ -2,9 +2,9 @@
 App for manage users.
 ## Features
 
-This app is designed for create, get, update and delete.
+This app is designed for create, get, update and delete users.
 
-You cal also make use of the API, which provides the following features:
+You can also make use of the API, which provides the following features:
 
 ```
 - POST: /user
